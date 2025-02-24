@@ -1,4 +1,5 @@
 #include <stdio.h>
+
 struct Process {
     int id;
     int burst_time;
@@ -8,6 +9,7 @@ struct Process {
     int waiting_time;
     int turnaround_time;
 };
+
 void roundRobin(struct Process processes[], int n, int time_quantum) {
     int time = 0;
     int completed = 0;
@@ -35,7 +37,9 @@ void roundRobin(struct Process processes[], int n, int time_quantum) {
             time++;
         }
     }
+    
     printf("\nProcess ID | Arrival Time | Burst Time | Completion Time | Waiting Time | Turnaround Time\n");
+    int total_waiting_time = 0;
     for (i = 0; i < n; i++) {
         printf("%9d | %12d | %10d | %15d | %12d | %15d\n",
                processes[i].id,
@@ -44,14 +48,20 @@ void roundRobin(struct Process processes[], int n, int time_quantum) {
                processes[i].completion_time,
                processes[i].waiting_time,
                processes[i].turnaround_time);
+        total_waiting_time += processes[i].waiting_time;
     }
+
+    float average_waiting_time = (float) total_waiting_time / n;
+    printf("\nAverage Waiting Time: %.2f\n", average_waiting_time);
 }
+
 int main() {
     int n, time_quantum;
     printf("Enter the number of processes: ");
     scanf("%d", &n);
     printf("Enter the time quantum: ");
     scanf("%d", &time_quantum);
+    
     struct Process processes[n];
     for (int i = 0; i < n; i++) {
         processes[i].id = i + 1;
@@ -61,6 +71,7 @@ int main() {
         scanf("%d", &processes[i].burst_time);
         processes[i].remaining_time = processes[i].burst_time;
     }
+
     roundRobin(processes, n, time_quantum);
     return 0;
 }
@@ -81,3 +92,6 @@ Process ID | Arrival Time | Burst Time | Completion Time | Waiting Time | Turnar
         1 |            5 |          6 |              17 |            6 |              12
         2 |            4 |          6 |              19 |            9 |              15
         3 |            2 |          5 |              15 |            8 |              13
+
+Average Waiting Time: 7.67
+
