@@ -21,35 +21,7 @@ int main()
             }
         }
         if(k == f) {
-            m[count++] = rs[i]; Enter the length of reference string -- 20
-
- Enter the reference string -- 7 0 1 2 0 3 0 4 2 3 0 3 2 1 2 0 1 7 0 1
-
- Enter no. of frames -- 3
-
- The Page Replacement Process is -- 
-	7	-1	-1	PF No. 1
-	7	0	-1	PF No. 2
-	7	0	1	PF No. 3
-	2	0	1	PF No. 4
-	2	0	1
-	2	3	1	PF No. 5
-	2	3	0	PF No. 6
-	4	3	0	PF No. 7
-	4	2	0	PF No. 8
-	4	2	3	PF No. 9
-	0	2	3	PF No. 10
-	0	2	3
-	0	2	3
-	0	1	3	PF No. 11
-	0	1	2	PF No. 12
-	0	1	2
-	0	1	2
-	7	1	2	PF No. 13
-	7	0	2	PF No. 14
-	7	0	1	PF No. 15
-
- The number of Page Faults using FIFO are 15
+            m[count++] = rs[i];
             pf++;
         }
         for(j = 0; j < f; j++) {
